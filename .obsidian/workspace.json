@@ -13,28 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "thm notes/THM red team/LazyAdmin THM.md",
+                "file": "thm notes/THM red team/rootme.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LazyAdmin THM"
-            }
-          }
-        ]
-      },
-      {
-        "id": "01f5f23c48d60b14",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "eddc36aee11790e3",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {},
-              "icon": "lucide-git-fork",
-              "title": "Graph view"
+              "title": "rootme"
             }
           }
         ]
@@ -188,11 +172,14 @@
   },
   "active": "56e717d896449b4c",
   "lastOpenFiles": [
+    "thm notes/THM red team/DogCat.md",
+    "Pasted image 20251029233226.png",
+    "Pasted image 20251028225825.png",
+    "thm notes/THM red team/LazyAdmin THM.md",
     "thm notes/THM red team/game.md",
     "thm notes/THM red team/HTB Artificial.md",
     "thm notes/Billing.md",
     "thm notes/THM red team/Rabbit store.md",
-    "thm notes/THM red team/LazyAdmin THM.md",
     "thm notes/THM red team/Billing.md",
     "thm notes/THM red team/rootme.md",
     "thm notes/THM red team/Reset.md",
