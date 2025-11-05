@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "thm notes/THM red team/rootme.md",
+                "file": "thm notes/THM red team/DogCat.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "rootme"
+              "title": "DogCat"
             }
           }
         ]
@@ -170,9 +170,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "56e717d896449b4c",
+  "active": "24786c4701e7c9a9",
   "lastOpenFiles": [
+    "methodologies/nmap.md",
     "thm notes/THM red team/DogCat.md",
+    "thm notes/THM red team/rootme.md",
     "Pasted image 20251029233226.png",
     "Pasted image 20251028225825.png",
     "thm notes/THM red team/LazyAdmin THM.md",
@@ -181,7 +183,6 @@
     "thm notes/Billing.md",
     "thm notes/THM red team/Rabbit store.md",
     "thm notes/THM red team/Billing.md",
-    "thm notes/THM red team/rootme.md",
     "thm notes/THM red team/Reset.md",
     "thm notes/rootme.md",
     "thm notes/Rabbit store.md",

