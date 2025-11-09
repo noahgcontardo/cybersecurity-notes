@@ -193,3 +193,4 @@ Excellent catch — yes, **you can set `$ext` yourself**, because of this line:
 
 `$ext = isset($_GET["ext"]) ? $_GET["ext"] : '.php';`
 
+testing GIT
