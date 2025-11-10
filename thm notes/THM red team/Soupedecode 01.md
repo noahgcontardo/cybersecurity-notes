@@ -74,3 +74,11 @@ SMB         10.201.122.170  445    DC01             IPC$            READ        
 SMB         10.201.122.170  445    DC01             NETLOGON                        Logon server share 
 SMB         10.201.122.170  445    DC01             SYSVOL                          Logon server share 
 SMB         10.201.122.170  445    DC01             Users  
+
+root@ip-10-201-48-39:~# smbclient //10.201.112.170/IPC$
+Password for [WORKGROUP\root]:
+do_connect: Connection to 10.201.112.170 failed (Error NT_STATUS_HOST_UNREACHABLE)
+
+Well IPC$ may have read perms but I can't really connect like I can with the other shares.
+
+Oh, nevermind it appears the server crashed for the 4th time haha
