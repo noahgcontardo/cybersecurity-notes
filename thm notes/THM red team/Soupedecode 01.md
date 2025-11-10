@@ -87,4 +87,5 @@ root@ip-10-201-48-39:~# smbclient -L //10.201.99.60/IPC$
 Password for [WORKGROUP\root]:
 session setup failed: NT_STATUS_ACCESS_DENIED
 
-reset the room again again
+reset the room again again. Without a website with a list of emails or an open SMB share with a user list or LDAP bindings permitting users or comments to be enumerated. Walkthroughs go one of two ways here. Just guessing UNs with tools like kerbrute and spamming wordlists of guesses. Using a python script to assemble username guesses with common names and symbol combinations looking for SID matches. One walkthrough  I read used a tool called lookupsid.py and this can be used as a SID brute forcing tool all in one pre made script. Just like our nxc command that grabbed we can use null UN/PW arguments
+
