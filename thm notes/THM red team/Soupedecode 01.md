@@ -56,3 +56,21 @@ ldapsearch -x -H ldap://DC01.SOUPEDECODE.LOCAL -s base -b "SOUPEDECODE" "objectc
 ldapsearch -x -H ldap://DC01.SOUPEDECODE.LOCAL -s base -b "LOCAL" "objectclass=*"
 
 but plugging in base info got us nothing because of not allowing anonymous LDAP bindings
+
+root@ip-10-201-48-39:~# nxc smb 10.201.122.170 -u '' -p '' --shares
+
+got nothing
+
+root@ip-10-201-48-39:~# nxc smb 10.201.122.170 -u ' ' -p '' --shares
+SMB         10.201.122.170  445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:SOUPEDECODE.LOCAL) (signing:True) (SMBv1:False)
+SMB         10.201.122.170  445    DC01             [+] SOUPEDECODE.LOCAL\ : (Guest)
+SMB         10.201.122.170  445    DC01             [*] Enumerated shares
+SMB         10.201.122.170  445    DC01             Share           Permissions     Remark
+SMB         10.201.122.170  445    DC01             -----           -----------     ------
+SMB         10.201.122.170  445    DC01             ADMIN$                          Remote Admin
+SMB         10.201.122.170  445    DC01             backup                          
+SMB         10.201.122.170  445    DC01             C$                              Default share
+SMB         10.201.122.170  445    DC01             IPC$            READ            Remote IPC
+SMB         10.201.122.170  445    DC01             NETLOGON                        Logon server share 
+SMB         10.201.122.170  445    DC01             SYSVOL                          Logon server share 
+SMB         10.201.122.170  445    DC01             Users  
