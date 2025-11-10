@@ -82,3 +82,9 @@ do_connect: Connection to 10.201.112.170 failed (Error NT_STATUS_HOST_UNREACHABL
 Well IPC$ may have read perms but I can't really connect like I can with the other shares.
 
 Oh, nevermind it appears the server crashed for the 4th time haha
+
+root@ip-10-201-48-39:~# smbclient -L //10.201.99.60/IPC$
+Password for [WORKGROUP\root]:
+session setup failed: NT_STATUS_ACCESS_DENIED
+
+reset the room again again
