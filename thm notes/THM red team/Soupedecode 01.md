@@ -31,4 +31,28 @@ PORT     STATE SERVICE       VERSION
 | Not valid before: 2025-06-17T21:35:42
 |_Not valid after:  2025-12-17T21:35:42
 
+enum4linux -a 10.201.103.90
 
+had a lame output
+
+root@ip-10-201-48-39:~# nxc smb 10.201.103.90 -u '' -p '' --shares
+SMB         10.201.103.90   445    DC01             [*] Windows Server 2022 Build 20348 x64 (name:DC01) (domain:SOUPEDECODE.LOCAL) (signing:True) (SMBv1:False)
+SMB         10.201.103.90   445    DC01             [-] SOUPEDECODE.LOCAL\: STATUS_ACCESS_DENIED 
+SMB         10.201.103.90   445    DC01             [-] Error enumerating shares: Error occurs while reading from remote(104)
+
+ldapsearch -x -H ldap://DC01.SOUPEDECODE.LOCAL -s base -b "" "objectclass=*"
+
+did spit out base info
+
+rootDomainNamingContext: DC=SOUPEDECODE,DC=LOCAL
+ldapServiceName: SOUPEDECODE.LOCAL:dc01$@SOUPEDECODE.LOCAL
+isGlobalCatalogReady: TRUE
+supportedSASLMechanisms: GSSAPI
+supportedSASLMechanisms: GSS-SPNEGO
+supportedSASLMechanisms: EXTERNAL
+supportedSASLMechanisms: DIGEST-MD5
+
+ldapsearch -x -H ldap://DC01.SOUPEDECODE.LOCAL -s base -b "SOUPEDECODE" "objectclass=*"
+ldapsearch -x -H ldap://DC01.SOUPEDECODE.LOCAL -s base -b "LOCAL" "objectclass=*"
+
+but plugging in base info got us nothing because of not allowing anonymous LDAP bindings
