@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "thm notes/THM red team/Ignite.md",
+                "file": "thm notes/THM red team/Balling.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ignite"
+              "title": "Balling"
             }
           }
         ]
@@ -186,10 +186,13 @@
   },
   "active": "06d6d587b7c5cea5",
   "lastOpenFiles": [
+    "thm notes/THM red team/Billing.md",
+    "thm notes/THM red team/HTB Expressway.md",
+    "thm notes/THM red team/Balling.md",
+    "thm notes/THM red team/Ignite.md",
     "thm notes/THM red team/Internal.md",
     "thm notes/THM red team/Include.md",
     "thm notes/THM red team/game.md",
-    "thm notes/THM red team/Ignite.md",
     "Pasted image 20251128125628.png",
     "Pasted image 20251128125622.png"
   ]
