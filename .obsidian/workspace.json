@@ -1,20 +1,24 @@
 {
   "main": {
-    "id": "5f7399e12200a8fa",
+    "id": "496a23a1cb0c72d8",
     "type": "split",
     "children": [
       {
-        "id": "ab6e10db8365e51b",
+        "id": "6deec65a9b2c89ce",
         "type": "tabs",
         "children": [
           {
-            "id": "9b4430cadfa0d977",
+            "id": "06d6d587b7c5cea5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "thm notes/THM red team/Ignite.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "Ignite"
             }
           }
         ]
@@ -23,15 +27,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "a7666fa46510e7dc",
+    "id": "d14df39dd1487185",
     "type": "split",
     "children": [
       {
-        "id": "5c48b20badfcacc4",
+        "id": "d46d6e5088abfe59",
         "type": "tabs",
         "children": [
           {
-            "id": "94320a449b998faf",
+            "id": "b534e2dce750ab25",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -44,7 +48,7 @@
             }
           },
           {
-            "id": "82a937cacca83de5",
+            "id": "8f0c59a76886f69a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +65,7 @@
             }
           },
           {
-            "id": "bf94ede0e0244fd2",
+            "id": "e4a8cbd4744ee580",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -77,19 +81,20 @@
     "width": 300
   },
   "right": {
-    "id": "3fca7b884760ed2a",
+    "id": "82a85d231d014c46",
     "type": "split",
     "children": [
       {
-        "id": "c861422c93b0232b",
+        "id": "2aca3f9df2056a47",
         "type": "tabs",
         "children": [
           {
-            "id": "21fdf695001a0aa1",
+            "id": "7f3fed3030c79ce8",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
+                "file": "thm notes/THM red team/Ignite.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -99,24 +104,25 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for Ignite"
             }
           },
           {
-            "id": "a6d9115f438f5d2c",
+            "id": "23e103931a8941c1",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "thm notes/THM red team/Ignite.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links"
+              "title": "Outgoing links from Ignite"
             }
           },
           {
-            "id": "ba882d9b25937cb2",
+            "id": "3e23fcc9ab193eb8",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -131,17 +137,32 @@
             }
           },
           {
-            "id": "f9d54c7c0437faab",
+            "id": "110070a79b7e3a5b",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "All properties"
+            }
+          },
+          {
+            "id": "c4582e95b6776292",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
+                "file": "thm notes/THM red team/Ignite.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline"
+              "title": "Outline of Ignite"
             }
           }
         ]
@@ -153,6 +174,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "obsidian-git:Open Git source control": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -162,8 +184,13 @@
       "bases:Create new base": false
     }
   },
-  "active": "94320a449b998faf",
+  "active": "06d6d587b7c5cea5",
   "lastOpenFiles": [
-    "import"
+    "thm notes/THM red team/Internal.md",
+    "thm notes/THM red team/Include.md",
+    "thm notes/THM red team/game.md",
+    "thm notes/THM red team/Ignite.md",
+    "Pasted image 20251128125628.png",
+    "Pasted image 20251128125622.png"
   ]
 }
