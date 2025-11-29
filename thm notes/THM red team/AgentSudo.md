@@ -40,3 +40,24 @@ HOP RTT      ADDRESS
 
 OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
 Nmap done: 1 IP address (1 host up) scanned in 37.66 seconds
+
+┌──(kali㉿kali)-[~/THM/AgentSudo]
+└─$ gobuster dir -u 10.64.132.105 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .json,.js,.html,.txt,.php,.yaml,.xml  
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.64.132.105
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.8
+[+] Extensions:              txt,php,yaml,xml,json,js,html
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/index.php            (Status: 200) [Size: 218]
+
+--lame result
