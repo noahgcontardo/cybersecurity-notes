@@ -79,3 +79,9 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-11-29 14:27:
 [21][ftp] host: 10.64.132.105   login: chris   password: crystal
 
 --skipping a bunch of boring steg stuff
+
+══╣ Polkit Binary
+Pkexec binary found at: /usr/bin/pkexec                                                                                                     
+Pkexec binary has SUID bit set!
+-rwsr-xr-x 1 root root 22520 Mar 27  2019 /usr/bin/pkexec
+pkexec version 0.105
