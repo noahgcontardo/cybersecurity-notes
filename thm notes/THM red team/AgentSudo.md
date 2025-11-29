@@ -78,3 +78,4 @@ Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-11-29 14:27:
 [DATA] attacking ftp://10.64.132.105:21/
 [21][ftp] host: 10.64.132.105   login: chris   password: crystal
 
+--skipping a bunch of boring steg stuff
