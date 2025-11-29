@@ -61,3 +61,10 @@ Starting gobuster in directory enumeration mode
 /index.php            (Status: 200) [Size: 218]
 
 --lame result
+
+
+
+![[Pasted image 20251129135628.png]]
+
+![[Pasted image 20251129135700.png]]
+
