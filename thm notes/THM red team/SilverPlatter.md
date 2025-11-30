@@ -97,3 +97,22 @@ Starting gobuster in directory enumeration mode
 /README.txt           (Status: 200) [Size: 771]
 /LICENSE.txt          (Status: 200) [Size: 17128]
 
+┌──(kali㉿kali)-[~/THM/SilverPlatter]
+└─$ gobuster dir -u http://10.64.132.140:8080 -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt -x .html,.txt,.js,.php,.json,.yaml,.xml
+===============================================================
+Gobuster v3.8
+by OJ Reeves (@TheColonial) & Christian Mehlmauer (@firefart)
+===============================================================
+[+] Url:                     http://10.64.132.140:8080
+[+] Method:                  GET
+[+] Threads:                 10
+[+] Wordlist:                /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+[+] Negative Status codes:   404
+[+] User Agent:              gobuster/3.8
+[+] Extensions:              txt,js,php,json,yaml,xml,html
+[+] Timeout:                 10s
+===============================================================
+Starting gobuster in directory enumeration mode
+===============================================================
+/website              (Status: 302) [Size: 0] [--> http://10.64.132.140:8080/website/]
+/console              (Status: 302) [Size: 0] [--> /noredirect.html]
