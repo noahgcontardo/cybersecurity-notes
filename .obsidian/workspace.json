@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "thm notes/THM red team/AgentSudo.md",
+                "file": "thm notes/THM red team/SilverPlatter.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AgentSudo"
+              "title": "SilverPlatter"
             }
           }
         ]
@@ -186,9 +186,10 @@
   },
   "active": "06d6d587b7c5cea5",
   "lastOpenFiles": [
+    "thm notes/THM red team/AgentSudo.md",
+    "thm notes/THM red team/SilverPlatter.md",
     "thm notes/THM red team/Alfred.md",
     "methodologies/Linux priv esc.md",
-    "thm notes/THM red team/AgentSudo.md",
     "Pasted image 20251129142912.png",
     "Pasted image 20251129135700.png",
     "Pasted image 20251129135628.png",
