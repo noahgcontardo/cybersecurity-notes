@@ -116,3 +116,7 @@ Starting gobuster in directory enumeration mode
 ===============================================================
 /website              (Status: 302) [Size: 0] [--> http://10.64.132.140:8080/website/]
 /console              (Status: 302) [Size: 0] [--> /noredirect.html]
+
+
+![[Pasted image 20251130150945.png]]
+
