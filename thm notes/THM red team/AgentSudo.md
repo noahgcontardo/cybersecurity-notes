@@ -85,3 +85,14 @@ Pkexec binary found at: /usr/bin/pkexec
 Pkexec binary has SUID bit set!
 -rwsr-xr-x 1 root root 22520 Mar 27  2019 /usr/bin/pkexec
 pkexec version 0.105
+
+--couldnt get root cve to stick
+
+sudo -l
+```py
+root    ALL=(ALL:ALL) ALL
+
+james ALL=(ALL,!root) /bin/bash
+```
+
+no not root statement is vulnerable when you google it you find https://www.exploit-db.com/exploits/47502
